@@ -11,8 +11,7 @@ while True:
         print("\nexit")
         sys.exit()
     except :
-        print("invalid")
-        continue
+        data = 0
 
     if data > 4 :
         data = 0
