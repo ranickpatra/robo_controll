@@ -41,13 +41,12 @@ def readData():
             return
 
 
-        print(int(sum(x_queue.queue) / x_queue.qsize()))
+        print(int(sum(x_queue.queue) / x_queue.qsize()), " ", int(sum(y_queue.queue) / y_queue.qsize()), " ", int(sum(z_queue.queue) / z_queue.qsize()))
 
-        
+
 
 
 
 while True:
     readData()
     time.sleep(0.01)
-
