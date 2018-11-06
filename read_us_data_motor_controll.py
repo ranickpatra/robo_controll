@@ -21,7 +21,9 @@ def readData():
         data.append(block[6] << 8 | block[7])
         print(data)
 
-    if data[0] < 500:
+    if data[0] < 600:
+        send_motor_command(2)
+    elif data[1] < 600:
         send_motor_command(1)
     else:
         send_motor_command(0)
