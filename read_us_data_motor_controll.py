@@ -56,6 +56,27 @@ def send_motor_command():
     elif motor_triggers[0] and motor_triggers[2] and motor_triggers[3]:
         # move backword
         data = 2
+    elif motor_triggers[0] and motor_triggers[1]:
+        #stop
+        data = 0
+    elif motor_triggers[2] and motor_triggers[3]:
+        #contimue what is previous command
+        return
+    elif motor_triggers[0] and motor_triggers[2]:
+        # Rotate Right
+        data = 3
+    elif motor_triggers[0] and motor_triggers[3]:
+        # Rotate Left
+        data = 4
+    elif motor_triggers[1] and motor_triggers[2]:
+        # Move Forword
+        data = 1
+    elif motor_triggers[1] and motor_triggers[3]:
+        # Rotate Forword
+        data = 1
+    else:
+        # stop
+        data = 0
 
     with SMBusWrapper(1) as bus:
         try:
