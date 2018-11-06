@@ -2,6 +2,8 @@ from smbus2 import SMBusWrapper
 import time
 
 address = 0x05
+motor_triggers = {0: False, 1: False, 2: False, 3: False}
+
 
 def readData():
     with SMBusWrapper(1) as bus:
@@ -21,16 +23,40 @@ def readData():
         data.append(block[6] << 8 | block[7])
         print(data)
 
-    if data[0] < 600:
-        send_motor_command(2)
-    elif data[1] < 600:
-        send_motor_command(1)
-    else:
-        send_motor_command(0)
+    # if data[0] < 600:
+    #     send_motor_command(2)
+    # elif data[1] < 600:
+    #     send_motor_command(1)
+    # else:
+    #     send_motor_command(0)
+
+    for i in range(4):
+        motor_triggers[i] = data[i] < 600
+
+    send_motor_command()
 
 
 
-def send_motor_command(data=0):
+def send_motor_command():
+
+    data = 0
+    #data :: F, B, L, R
+    #        1, 2, 4, 3
+    if motor_triggers[0] and motor_triggers[1] and motor_triggers[2] and motor_triggers[3]:
+        data = 0
+    elif motor_triggers[0] and motor_triggers[1] and motor_triggers[2]:
+        # Rotate Right
+        data = 3
+    elif motor_triggers[0] and motor_triggers[1] and motor_triggers[3]:
+        # Rotate left
+        data = 4
+    elif motor_triggers[1] and motor_triggers[2] and motor_triggers[3]:
+        # move forword
+        data = 1
+    elif motor_triggers[0] and motor_triggers[2] and motor_triggers[3]:
+        # move backword
+        data = 2
+
     with SMBusWrapper(1) as bus:
         try:
             bus.write_byte_data(address, 0, data)
