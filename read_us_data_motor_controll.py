@@ -2,7 +2,7 @@ from smbus2 import SMBusWrapper
 import time
 
 address = 0x05
-motor_triggers = {0: False, 1: False, 2: False, 3: False}
+motor_triggers = [False, False, False, False]
 
 
 def readData():
