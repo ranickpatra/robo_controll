@@ -8,6 +8,7 @@ def readData():
         try:
             block = bus.read_i2c_block_data(address, 0, 8)
         except:
+            print("I2C ERROR")
             return
 
         for b in block:
