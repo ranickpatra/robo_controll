@@ -3,6 +3,9 @@ import time
 import sys
 from clean_print import Cprint
 
+#data :: F, B, L, R
+time_data = [0,0,0,0]
+
 address = 0x05
 
 def readData():
@@ -21,9 +24,12 @@ def readData():
         data.append(block[2] << 8 | block[3])
         data.append(block[4] << 8 | block[5])
         data.append(block[6] << 8 | block[7])
-        Cprint(data)
+    global time_data
+    time_data = data
+
 
 
 while True:
     readData()
+    print(time_data)
     time.sleep(0.1)
