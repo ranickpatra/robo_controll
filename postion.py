@@ -20,9 +20,10 @@ def readData():
         data.append(block[2] << 8 | block[3])
         data.append(block[4] << 8 | block[5])
         data.append(block[6] << 8 | block[7])
-        sys.stdout.write(str(data))
+        l = sys.stdout.write(str(data))
+        sys.sdtout.write(" "*(40-l))
         sys.stdout.flush()
-
+        sys.stdout.write("\b"*40)
 
 
 while True:
