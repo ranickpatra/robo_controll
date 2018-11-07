@@ -7,6 +7,9 @@ from clean_print import Cprint
 time_data = [0,0,0,0]
 
 address = 0x05
+width = 0
+height = 0
+pos = {'x':0, 'y':0}
 
 def readData():
     with SMBusWrapper(1) as bus:
@@ -31,5 +34,19 @@ def readData():
 
 while True:
     readData()
-    print(time_data)
+    #print(time_data)
+    position = [[time_data[2], time_data[1]], [time_data[3], time_data[0]]]
+
+    if position[0][0] != 0 and position[1][0] != 0:
+        width = position[0][0] + position[1][0]
+    if position[0][1] != 0 and position[1][1] != 0:
+        height = position[0][1] + position[1][1]
+
+    if position[0][0] == 0:
+        pos['x'] = width - position[1][0]
+    if position[0][1] == 0:
+        pos['y'] = height - position[1][1]
+
+    print(pos)    
+
     time.sleep(0.1)
