@@ -62,7 +62,7 @@ def send_motor_command():
         data = 0
     elif motor_triggers[2] and motor_triggers[3]:
         #contimue what is previous command
-        data = global.prev_command
+        data = global prev_command
     elif motor_triggers[0] and motor_triggers[2]:
         # Rotate Right
         data = 3
@@ -79,7 +79,7 @@ def send_motor_command():
         # stop
         data = 0
 
-    global.prev_command = data;
+    global prev_command = data;
     with SMBusWrapper(1) as bus:
         try:
             bus.write_byte_data(address, 0, data)
