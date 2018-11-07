@@ -2,7 +2,7 @@ import sys
 lenght = 0
 
 def Cprint(data):
-    global x
+    global length
     l = sys.stdout.write(str(data))
     if l > lenght:
         lenght = l
