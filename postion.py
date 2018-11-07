@@ -44,9 +44,13 @@ while True:
 
     if position[0][0] == 0:
         pos['x'] = width - position[1][0]
+    else:
+        pos['x'] = position[0][0]
     if position[0][1] == 0:
         pos['y'] = height - position[1][1]
+    else:
+        pos['y'] = position[0][1]
 
-    print(pos)    
+    print(pos)
 
     time.sleep(0.1)
