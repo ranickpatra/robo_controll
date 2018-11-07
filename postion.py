@@ -1,6 +1,7 @@
 from smbus2 import SMBusWrapper
 import time
 import sys
+from clean_print import Cprint
 
 address = 0x05
 
@@ -20,10 +21,7 @@ def readData():
         data.append(block[2] << 8 | block[3])
         data.append(block[4] << 8 | block[5])
         data.append(block[6] << 8 | block[7])
-        l = sys.stdout.write(str(data))
-        sys.stdout.write(" "*(40-l))
-        sys.stdout.flush()
-        sys.stdout.write("\b"*40)
+        Cprint(data)
 
 
 while True:
