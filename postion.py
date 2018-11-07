@@ -20,7 +20,7 @@ def readData():
         data.append(block[2] << 8 | block[3])
         data.append(block[4] << 8 | block[5])
         data.append(block[6] << 8 | block[7])
-        print(data, end="")
+        sys.stdout.write(data)
         sys.stdout.flush()
 
 
