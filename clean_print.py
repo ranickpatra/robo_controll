@@ -1,11 +1,11 @@
 import sys
-lenght = 0
+length = 0
 
 def Cprint(data):
     global length
     l = sys.stdout.write(str(data))
-    if l > lenght:
+    if l > length:
         lenght = l
-    sys.stdout.write(" "*(lenght-l))
+    sys.stdout.write(" "*(length-l))
     sys.stdout.flush()
-    sys.stdout.write("\b"*lenght)
+    sys.stdout.write("\b"*length)

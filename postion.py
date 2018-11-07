@@ -1,7 +1,7 @@
 from smbus2 import SMBusWrapper
 import time
 import sys
-import clean_print
+from clean_print import Cprint
 
 address = 0x05
 
@@ -21,7 +21,7 @@ def readData():
         data.append(block[2] << 8 | block[3])
         data.append(block[4] << 8 | block[5])
         data.append(block[6] << 8 | block[7])
-        clean_print.Cprint(data)
+        Cprint(data)
 
 
 while True:
