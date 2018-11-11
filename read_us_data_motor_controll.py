@@ -78,7 +78,7 @@ def send_motor_command():
         data = 1
     else:
         # stop
-        data = 0
+        data = 1
 
     prev_command = data;
     with SMBusWrapper(1) as bus:
