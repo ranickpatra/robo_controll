@@ -76,6 +76,8 @@ def send_motor_command():
     elif motor_triggers[1] and motor_triggers[3]:
         # Rotate Forword
         data = 1
+    elif motor_triggers[0]:
+        data = 0
     else:
         # stop
         data = 1
