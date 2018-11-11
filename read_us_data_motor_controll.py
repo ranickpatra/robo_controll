@@ -91,5 +91,12 @@ def send_motor_command():
 
 
 while True:
-    readData()
+
+    try :
+        readData()
+    except KeyboardInterrupt:
+        print("\nexit")
+        with SMBusWrapper(1) as bus:
+            bus.write_byte_data(address, 0, 0)
+        sys.exit()
     time.sleep(0.1)
