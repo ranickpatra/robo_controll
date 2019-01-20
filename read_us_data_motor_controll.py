@@ -94,14 +94,14 @@ def send_motor_command():
         except:
             print("Motor command error")
 
+if __name__ == '__main__':
+    while True:
 
-while True:
-
-    try :
-        readData()
-    except KeyboardInterrupt:
-        print("\nexit")
-        with SMBusWrapper(1) as bus:
-            bus.write_byte_data(address, 0, 0)
-        sys.exit()
-    time.sleep(0.1)
+        try :
+            readData()
+        except KeyboardInterrupt:
+            print("\nexit")
+            with SMBusWrapper(1) as bus:
+                bus.write_byte_data(address, 0, 0)
+            sys.exit()
+        time.sleep(0.1)
