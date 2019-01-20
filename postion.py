@@ -27,8 +27,7 @@ def readData():
             print("I2C ERROR while reading")
             return None
 
-        for b in block:            pass
-
+        for b in block:
             if b & 0xFF == 0xFF:
                 print('Read error 0xFF')
                 return None
