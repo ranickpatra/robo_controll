@@ -46,7 +46,7 @@ def readData():
 
 
 
-
-while True:
-    readData()
-    time.sleep(0.01)
+if __name__ == '__main__':
+    while True:
+        readData()
+        time.sleep(0.01)

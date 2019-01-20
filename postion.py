@@ -2,6 +2,9 @@ from smbus2 import SMBusWrapper
 import time
 import sys
 from clean_print import Cprint
+import numpy as np
+from read_magneto_data import readData as read_magnet
+
 
 #length = 455 cm
 #width = 149 cm
@@ -11,8 +14,8 @@ from clean_print import Cprint
 d_format = {'fwd' : 1, 'bkwd' : 3, 'left' : 2, 'right' : 0}
 
 address = 0x05
-width = 0
-height = 0
+length = 455
+width = 149
 pos = {'x':0, 'y':0}
 
 def readData():
@@ -35,6 +38,9 @@ def readData():
 
     return data
 
+def calculate_position(data):
+
+
 
 if __name__ == '__main__':
     while True:
@@ -45,6 +51,7 @@ if __name__ == '__main__':
 
         data = [d * 0.0436 for d in data]
 
-        print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
-
+        #print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
+        read_magnet()
+        
         time.sleep(0.1)
