@@ -3,6 +3,9 @@ import time
 import sys
 from clean_print import Cprint
 
+#length = 455 cm
+#width = 149 cm
+
 #data :: R, F, L, B
 #        1, 2, 4, 3
 d_format = {'fwd' : 1, 'bkwd' : 3, 'left' : 2, 'right' : 0}
@@ -18,11 +21,12 @@ def readData():
             block = bus.read_i2c_block_data(address, 0, 8)
         except:
             print("I2C ERROR while reading")
-            return
+            return None
 
         for b in block:
             if b & 0xFF == 0xFF:
-                return
+                print('Read error 0xFF')
+                return None
         data = []
         data.append(block[0] << 8 | block[1])
         data.append(block[2] << 8 | block[3])
@@ -35,7 +39,11 @@ def readData():
 if __name__ == '__main__':
     while True:
         data = readData()
-        #print(time_data)
+
+        if data == None:
+            continue
+
+        data = [d/2 * 0.034 for d in data]
 
         print(data)
 
