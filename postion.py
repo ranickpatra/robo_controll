@@ -38,7 +38,7 @@ def readData():
 
     return data
 
-def calculate_position(data):
+#def calculate_position(data):
 
 
 
@@ -53,5 +53,5 @@ if __name__ == '__main__':
 
         #print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
         read_magnet()
-        
+
         time.sleep(0.1)
