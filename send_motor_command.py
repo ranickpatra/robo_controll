@@ -1,7 +1,7 @@
 from smbus2 import SMBusWrapper
 import sys
 
-address = 0x05
+address = 0x06
 
 
 while True:
