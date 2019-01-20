@@ -64,6 +64,11 @@ def readData():
 
 
 if __name__ == '__main__':
+    thread1 = magReadThread(1, 'Thread-1')
+    try:
+        thread1.start();
+    except KeyboardInterrupt:
+        exitFlag = 1
     while True:
         data = readData()
 
@@ -77,3 +82,6 @@ if __name__ == '__main__':
             print(magnet_data)
 
         time.sleep(0.1)
+    exitFlag = 1
+    thread1.join()
+    print('Exiting main thread')
