@@ -45,6 +45,6 @@ if __name__ == '__main__':
 
         data = [d/2 * 0.034 for d in data]
 
-        print("%.0f, %.0f, %.0f, %.0f".format(data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
+        print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
 
         time.sleep(0.1)
