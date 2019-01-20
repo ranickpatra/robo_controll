@@ -4,7 +4,7 @@ import numpy as np
 import queue
 
 address = 0x0D
-max_queue_size = 2000
+max_queue_size = 50
 
 x_queue = queue.Queue(maxsize=max_queue_size)
 y_queue = queue.Queue(maxsize=max_queue_size)
