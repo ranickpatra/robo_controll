@@ -5,7 +5,7 @@ from clean_print import Cprint
 
 #data :: R, F, L, B
 #        1, 2, 4, 3
-d_format = {'fwd' : 1, 'bkwd' : 3, 'left' 2: , 'right' : 0}
+d_format = {'fwd' : 1, 'bkwd' : 3, 'left' : 2, 'right' : 0}
 
 address = 0x05
 width = 0
