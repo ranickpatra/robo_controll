@@ -1,3 +1,4 @@
+import threading
 from smbus2 import SMBusWrapper
 import time
 import sys
@@ -18,6 +19,25 @@ address = 0x05
 length = 455
 width = 149
 pos = {'x':0, 'y':0}
+magnet_data = None
+exitFlag = 0
+
+class magReadThread (threading.Thread):
+    def __init__(self, threadID, name):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+    def run(self):
+        readMagneto(self.name)
+
+def readMagneto(name):
+    global magnet_data
+    while True:
+        if exitFlag:
+            name.exit()
+
+        magnet_data = read_magnet()
+        time.sleep(0.01)
 
 def readData():
     with SMBusWrapper(1) as bus:
@@ -53,9 +73,7 @@ if __name__ == '__main__':
         data = [d * 0.0436 for d in data]
 
         #print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
-        k = read_magnet()
-        if k:
-            #print(k['x'], ' ', k['y'])
-            print(math.atan(-k['y']/k['x'])*180/math.pi)
+        if magnet_data:
+            print(magnet_data)
 
         time.sleep(0.1)
