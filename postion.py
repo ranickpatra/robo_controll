@@ -34,6 +34,7 @@ def readMagneto(name):
     global magnet_data
     while True:
         if exitFlag:
+            print('Thread exit ', name)
             name.exit()
 
         magnet_data = read_magnet()
