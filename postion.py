@@ -1,7 +1,8 @@
 from smbus2 import SMBusWrapper
 import time
 import sys
-from clean_print import Cprint
+#from clean_print import Cprint
+import math
 import numpy as np
 from read_magneto_data import readData as read_magnet
 
@@ -26,7 +27,8 @@ def readData():
             print("I2C ERROR while reading")
             return None
 
-        for b in block:
+        for b in block:            pass
+
             if b & 0xFF == 0xFF:
                 print('Read error 0xFF')
                 return None
@@ -54,6 +56,7 @@ if __name__ == '__main__':
         #print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
         k = read_magnet()
         if k:
-            print(k['x'], ' ', k['y'])
+            #print(k['x'], ' ', k['y'])
+            print(math.atan(-k['y']/k['x'])*180/math.pi)
 
         time.sleep(0.1)
