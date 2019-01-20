@@ -51,7 +51,8 @@ if __name__ == '__main__':
 
         data = [d * 0.0436 for d in data]
 
-        print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
-        #read_magnet()
+        #print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
+        k = read_magnet()
+        print(k['x'], ' ', k['y'])
 
         time.sleep(0.1)
