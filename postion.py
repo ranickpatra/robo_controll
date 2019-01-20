@@ -53,7 +53,7 @@ if __name__ == '__main__':
 
         #print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
         k = read_magnet()
-        #print(k['x'], ' ', k['y'])
-        print(k)
+        if k:
+            print(k['x'], ' ', k['y'])
 
         time.sleep(0.1)
