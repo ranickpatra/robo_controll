@@ -45,6 +45,6 @@ if __name__ == '__main__':
 
         data = [d/2 * 0.034 for d in data]
 
-        print("%.0f, %.0f, %.0f, %.0f".format(data))
+        print("%.0f, %.0f, %.0f, %.0f" % data)
 
         time.sleep(0.1)
