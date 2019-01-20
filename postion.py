@@ -3,8 +3,9 @@ import time
 import sys
 from clean_print import Cprint
 
-#data :: F, B, L, R
-time_data = [0,0,0,0]
+#data :: R, F, L, B
+#        1, 2, 4, 3
+d_format = {'fwd' : 1, 'bkwd' : 3, 'left' 2: , 'right' : 0}
 
 address = 0x05
 width = 0
@@ -27,30 +28,15 @@ def readData():
         data.append(block[2] << 8 | block[3])
         data.append(block[4] << 8 | block[5])
         data.append(block[6] << 8 | block[7])
-    global time_data
-    time_data = data
+
+    return data
 
 
+if __name__ == '__main__':
+    while True:
+        data = readData()
+        #print(time_data)
 
-while True:
-    readData()
-    #print(time_data)
-    position = [[time_data[2], time_data[1]], [time_data[3], time_data[0]]]
+        print(data)
 
-    if position[0][0] != 0 and position[1][0] != 0:
-        width = position[0][0] + position[1][0]
-    if position[0][1] != 0 and position[1][1] != 0:
-        height = position[0][1] + position[1][1]
-
-    if position[0][0] == 0:
-        pos['x'] = width - position[1][0]
-    else:
-        pos['x'] = position[0][0]
-    if position[0][1] == 0:
-        pos['y'] = height - position[1][1]
-    else:
-        pos['y'] = position[0][1]
-
-    print(pos)
-
-    time.sleep(0.1)
+        time.sleep(0.1)

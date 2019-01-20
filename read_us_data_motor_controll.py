@@ -6,8 +6,9 @@ motor_triggers = [False, False, False, False]
 prev_command = 0
 sensor_pos = [3,1, 2, 0]
 
-#data :: F, B, L, R
+#data :: R, F, L, B
 #        1, 2, 4, 3
+d_format = {'fwd' : 1, 'bkwd' : 3, 'left' 2: , 'right' : 0}
 
 def readData():
     with SMBusWrapper(1) as bus:
