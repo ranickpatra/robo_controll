@@ -8,7 +8,7 @@ sensor_pos = [3,1, 2, 0]
 
 #data :: R, F, L, B
 #        1, 2, 4, 3
-d_format = {'fwd' : 1, 'bkwd' : 3, 'left' 2: , 'right' : 0}
+d_format = {'fwd' : 1, 'bkwd' : 3, 'left': 2 , 'right' : 0}
 
 def readData():
     with SMBusWrapper(1) as bus:
