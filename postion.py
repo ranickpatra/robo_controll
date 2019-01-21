@@ -50,7 +50,6 @@ def readData():
 
         for b in block:
             if b & 0xFF == 0xFF:
-                print('Read error 0xFF')
                 return None
         data = []
         data.append(block[0] << 8 | block[1])

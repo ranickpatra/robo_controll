@@ -5,7 +5,7 @@ address = 0x06
 
 
 while True:
-    data = [0, 100]
+    data = [0, 200]
     try :
         data[0] = int(input("Enter 0, 1, 2, 3, 4 :: "))
     except KeyboardInterrupt:
@@ -19,3 +19,4 @@ while True:
 
     with SMBusWrapper(1) as bus:
         bus.write_byte_data(address, 0, data[0])
+        bus.write_byte_data(address, 0, data[1])
