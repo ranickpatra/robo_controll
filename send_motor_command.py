@@ -14,8 +14,8 @@ while True:
     except :
         data[0] = 0
 
-    #if data[0] > 4 :
-    #    data[0] = 0
+    if data[0] > 4 :
+        data[0] = 0
     print(data)
     with SMBusWrapper(1) as bus:
         bus.write_i2c_block_data(address, 0, data)
