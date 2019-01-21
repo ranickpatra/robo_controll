@@ -15,8 +15,8 @@ while True:
 
     if data > 4 :
         data = 0
-
+    data = data << 8 | 200;
     with SMBusWrapper(1) as bus:
-        bus.write_byte_data(address, 0, data)
-        #bus.write_byte_data(address, 0, 200 & 0xFF)
+        bus.write_byte_data(address, 0, data >> 8 && 0xFF)
+        bus.write_byte_data(address, 0, data && 0xFF)
 		#ok
