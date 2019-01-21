@@ -18,6 +18,6 @@ while True:
         data[0] = 0
     print(data)
     with SMBusWrapper(1) as bus:
-        bus.write_i2c_block_data(address, data[0], data[1])
+        bus.write_i2c_block_data(address, 0, data)
         block = bus.read_i2c_block_data(address, 0, 2)
         print(block)
