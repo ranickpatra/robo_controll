@@ -18,5 +18,5 @@ while True:
     #data = data << 8 | 200;
     with SMBusWrapper(1) as bus:
         bus.write_byte(address, data)
-        bus.write_byte(address, 200)
+        bus.write_byte(address, 150)
 		#ok
