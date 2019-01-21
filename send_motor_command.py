@@ -19,5 +19,5 @@ while True:
         data[0] = 0
 
     #with SMBusWrapper(1) as bus:
-    with smbus.SMBus(0) as bus:
+    with smbus.SMBus(1) as bus:
         bus.write_i2c_block_data(address, 0, data)
