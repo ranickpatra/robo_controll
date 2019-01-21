@@ -17,6 +17,6 @@ while True:
         data = 0
 
     with SMBusWrapper(1) as bus:
-        bus.write_byte_data(address, 0, data & 0xFF)
-        bus.write_byte_data(address, 0, 200 & 0xFF)
+        bus.write_byte_data(address, 0, 0x01)
+        #bus.write_byte_data(address, 0, 200 & 0xFF)
 		#ok
