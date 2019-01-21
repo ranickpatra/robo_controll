@@ -19,4 +19,4 @@ while True:
 
     with SMBusWrapper(1) as bus:
         for d in data:
-            bus.write_byte(address, d)
+            bus.write_byte(address, d & 0xFF)
