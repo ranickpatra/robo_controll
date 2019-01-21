@@ -17,6 +17,5 @@ while True:
     if data[0] > 4 :
         data[0] = 0
 
-    for d in data:
-        with SMBusWrapper(1) as bus:
-            bus.write_byte(address, d & 0xFF)
+    with SMBusWrapper(1) as bus:
+        bus.write_byte(address, d[0])
