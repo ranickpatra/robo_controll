@@ -18,4 +18,4 @@ while True:
         data[0] = 0
 
     with SMBusWrapper(1) as bus:
-        bus.write_byte(address, d[0])
+        bus.write_byte(address, data[0])
