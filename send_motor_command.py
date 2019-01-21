@@ -1,4 +1,5 @@
-from smbus2 import SMBusWrapper
+#from smbus2 import SMBusWrapper
+import smbus
 import sys
 
 address = 0x06
@@ -17,6 +18,6 @@ while True:
     if data[0] > 4 :
         data[0] = 0
 
-    with SMBusWrapper(1) as bus:
-        for d in data:
-            bus.write_byte(address, d & 0xFF)
+    #with SMBusWrapper(1) as bus:
+    with smbus.SMBus(0) as bus:
+        bus.write_i2c_block_data(address, 0, data)
