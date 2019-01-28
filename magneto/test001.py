@@ -1,48 +1,56 @@
-#!/usr/bin/python
-import smbus
+#!/usr/bin/env python
+
+# i2c_HMC5883L.py
+# 2015-04-01
+# Public Domain
+
 import time
-import math
+import struct
+import sys
 
-bus = smbus.SMBus(1)
-address = 0x0d
+import pigpio # http://abyz.co.uk/rpi/pigpio/python.html
 
+if sys.version > '3':
+   buffer = memoryview
 
-def read_byte(adr):
-    return bus.read_byte_data(address, adr)
+BUS=1
 
-def read_word(adr):
-    high = bus.read_byte_data(address, adr)
-    low = bus.read_byte_data(address, adr+1)
-    val = (high << 8) + low
-    return val
+HMC5883L_I2C_ADDR=0x0d
 
-def read_word_2c(adr):
-    val = read_word(adr)
-    if (val >= 0x8000):
-        return -((65535 - val) + 1)
-    else:
-        return val
+RUNTIME=60.0
 
-def write_byte(adr, value):
-    bus.write_byte_data(address, adr, value)
+pi=pigpio.pi() # open local Pi
 
-write_byte(0, 0b01110000) # Set to 8 samples @ 15Hz
-write_byte(1, 0b00100000) # 1.3 gain LSb / Gauss 1090 (default)
-write_byte(2, 0b00000000) # Continuous sampling
+h = pi.i2c_open(BUS, HMC5883L_I2C_ADDR)
 
-# write_byte amendment as suggested by Valentin Barral
-#write_byte(0, 0b00000000)
-#write_byte(1, 0b1111111)
-#write_byte(2, 0b00000000)
+if h >= 0: # Connected OK?
 
-scale = 0.92
+   # Initialise HMC5883L.
+   pi.i2c_write_byte_data(h, 0x00, 0xF8)  # CRA 75Hz.
+   pi.i2c_write_byte_data(h, 0x02, 0x00)  # Mode continuous reads.
 
-x_out = read_word_2c(3) * scale
-y_out = read_word_2c(7) * scale
-z_out = read_word_2c(5) * scale
+   read = 0
 
-bearing  = math.atan2(y_out, x_out)
-if (bearing < 0):
-    bearing += 2 * math.pi
+   start_time = time.time()
 
-print ("Bearing: ", math.degrees(bearing))
+   while (time.time()-start_time) < RUNTIME:
+
+      # 0x3 = X MSB, 0x4 = X LSB
+      # 0x5 = Y MSB, 0x6 = Y LSB
+      # 0x7 = Z MSB, 0x8 = Z LSB
+
+      # > = big endian
+
+      (s, b) = pi.i2c_read_i2c_block_data(h, 0x03, 6)
+
+      if s >= 0:
+         (x, y, z) = struct.unpack('>3h', buffer(b))
+         print("{} {} {}".format(x, y, z))
+         read += 1
+         time.sleep(1)
+
+   pi.i2c_close(h)
+
+pi.stop()
+
+print(read, read/RUNTIME)
