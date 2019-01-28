@@ -6,5 +6,5 @@ mag_sens = qmc5883l.QMC5883L()
 
 while True:
     [x, y, z] = mag_sens.get_magnet()
-    print(math.degrees(math.atan(y/x)))
-    time.sleep(0.1)
+    print(x, y, z)
+    time.sleep(0.2)
