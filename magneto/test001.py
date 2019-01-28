@@ -6,4 +6,4 @@ mag_sens = qmc5883l.QMC5883L()
 
 [x, y, z] = mag_sens.get_magnet()
 
-print(math.degree(math.atan(y, x)))
+print(math.degrees(math.atan(y, x)))
