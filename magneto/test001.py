@@ -1,9 +1,10 @@
 import qmc5883l
 import math
+import time
 
 mag_sens = qmc5883l.QMC5883L()
 
-
-[x, y, z] = mag_sens.get_magnet()
-
-print(math.degrees(math.atan(y/x)))
+while True:
+    [x, y, z] = mag_sens.get_magnet()
+    print(math.degrees(math.atan(y/x)))
+    time.sleep(0.1)
