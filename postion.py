@@ -22,7 +22,7 @@ pos = {'x':0, 'y':0}
 magnet_data = None
 exitFlag = 0
 
-pos_matrix = np.zeros(400).reshape(20, 20)
+pos_matrix = np.zeros(625).reshape(25, 25)
 pos['x'] = 2
 pos['y'] = 2
 pos_matrix[2, 2] = 1
@@ -90,7 +90,14 @@ if __name__ == '__main__':
         pos['y'] = int(data[d_format['left']] / 20)
         pos_matrix.fill(0)
         pos_matrix[pos['x'], pos['y']] = 1
-        print(pos_matrix)
+        #print(pos_matrix)
+        for i in range(25):
+            for j in range(25):
+                if pos_matrix[i, j] == 0:
+                    print('.', end='')
+                else:
+                    print('#', end='')
+            print('')
 
         time.sleep(0.1)
     exitFlag = 1
