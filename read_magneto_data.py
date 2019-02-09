@@ -22,6 +22,6 @@ def readData():
 
 if __name__ == '__main__':
     while True:
-        x, y, z = readData()
-        print(x, y, z)
+
+        print(readData())
         time.sleep(0.2)
