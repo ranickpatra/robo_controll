@@ -58,7 +58,7 @@ def readMagneto(name):
     #global magnet_data
     while True:
         motor.send(1)
-        time.sleep(0.01)
+        time.sleep(0.2)
 
 def readData():
     with SMBusWrapper(1) as bus:
