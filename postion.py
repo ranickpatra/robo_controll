@@ -22,6 +22,11 @@ pos = {'x':0, 'y':0}
 magnet_data = None
 exitFlag = 0
 
+pos_matrix = np.zeros(400).reshape(20, 20)
+pos['x'] = 2
+pos['y'] = 2
+pos_matrix[2, 2] = 1
+
 # class magReadThread (threading.Thread):
 #     def __init__(self, threadID, name):
 #         threading.Thread.__init__(self)
@@ -39,6 +44,7 @@ exitFlag = 0
 #
 #         magnet_data = read_magnet()
 #         time.sleep(0.01)
+
 
 def readData():
     with SMBusWrapper(1) as bus:
@@ -77,9 +83,10 @@ if __name__ == '__main__':
 
         data = [d * 0.0436 for d in data]
 
-        #print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
-        if magnet_data:
-            print(magnet_data)
+        print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
+        # if magnet_data:
+        #     print(magnet_data)
+
 
         time.sleep(0.1)
     exitFlag = 1
