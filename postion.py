@@ -6,6 +6,7 @@ import sys
 import math
 import numpy as np
 #from read_magneto_data import readData as read_magnet
+import motor
 
 
 #length = 455 cm
@@ -76,6 +77,7 @@ if __name__ == '__main__':
     # except KeyboardInterrupt:
     #     exitFlag = 1
     while True:
+
         data = readData()
 
         if data == None:
@@ -100,6 +102,7 @@ if __name__ == '__main__':
                     print(' #', end='')
             print('')
         print('+++++++++++++++++++++++++')
+        motor.send(data=1)
         time.sleep(0.1)
     exitFlag = 1
     thread1.join()
