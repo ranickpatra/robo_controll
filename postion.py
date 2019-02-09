@@ -95,9 +95,9 @@ if __name__ == '__main__':
         for i in range(25):
             for j in range(25):
                 if pos_matrix[i, j] == 0:
-                    print('.', end='')
+                    print(' . ', end='')
                 else:
-                    print('#', end='')
+                    print(' # ', end='')
             print('')
         print('+++++++++++++++++++++++++')
         time.sleep(0.1)
