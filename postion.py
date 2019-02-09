@@ -101,8 +101,12 @@ if __name__ == '__main__':
         print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
         # if magnet_data:
         #     print(magnet_data)
-        pos['x'] = int(data[d_format['bkwd']] / 20)
-        pos['y'] = int(data[d_format['left']] / 20)
+        _x = int(data[d_format['bkwd']] / 20)
+        _y = int(data[d_format['left']] / 20)
+        if _x < 625 and _x >= 0:
+            pos['x'] = _x
+        if _y < 625 and _y >= 0:
+            pos['y'] = _y
         pos_matrix.fill(0)
         pos_matrix[pos['x'], pos['y']] = 1
         #print(pos_matrix)
