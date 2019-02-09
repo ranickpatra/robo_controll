@@ -46,6 +46,19 @@ pos_matrix[2, 2] = 1
 #         magnet_data = read_magnet()
 #         time.sleep(0.01)
 
+class magReadThread (threading.Thread):
+    def __init__(self, threadID, name):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+    def run(self):
+        readMagneto(self.name)
+
+def readMagneto(name):
+    #global magnet_data
+    while True:
+        motor.send(1)
+        time.sleep(0.01)
 
 def readData():
     with SMBusWrapper(1) as bus:
@@ -71,11 +84,11 @@ def readData():
 
 
 if __name__ == '__main__':
-    # thread1 = magReadThread(1, 'Thread-1')
-    # try:
-    #     thread1.start();
-    # except KeyboardInterrupt:
-    #     exitFlag = 1
+    thread1 = magReadThread(1, 'Thread-1')
+    try:
+        thread1.start();
+    except KeyboardInterrupt:
+        exitFlag = 1
     while True:
 
         data = readData()
@@ -102,7 +115,6 @@ if __name__ == '__main__':
                     print(' #', end='')
             print('')
         print('+++++++++++++++++++++++++')
-        motor.send(data=1)
         time.sleep(0.1)
     exitFlag = 1
     thread1.join()
