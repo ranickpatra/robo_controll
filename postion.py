@@ -83,23 +83,23 @@ if __name__ == '__main__':
 
         data = [d * 0.0436 for d in data]
 
-        #print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
+        print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
         # if magnet_data:
         #     print(magnet_data)
         pos['x'] = int(data[d_format['bkwd']] / 20)
         pos['y'] = int(data[d_format['left']] / 20)
         pos_matrix.fill(0)
         pos_matrix[pos['x'], pos['y']] = 1
-        #print(pos_matrix)
-        print('+++++++++++++++++++++++++')
-        for i in range(25):
-            for j in range(25):
-                if pos_matrix[i, j] == 0:
-                    print(' .', end='')
-                else:
-                    print(' #', end='')
-            print('')
-        print('+++++++++++++++++++++++++')
+        # #print(pos_matrix)
+        # print('+++++++++++++++++++++++++')
+        # for i in range(25):
+        #     for j in range(25):
+        #         if pos_matrix[i, j] == 0:
+        #             print(' .', end='')
+        #         else:
+        #             print(' #', end='')
+        #     print('')
+        # print('+++++++++++++++++++++++++')
         time.sleep(0.1)
     exitFlag = 1
     thread1.join()
