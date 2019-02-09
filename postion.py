@@ -89,7 +89,7 @@ if __name__ == '__main__':
         pos['x'] = int(data[d_format['bkwd']] / 20)
         pos['y'] = int(data[d_format['left']] / 20)
         pos_matrix.fill(0)
-        pos_matrix[pos['x'], pos['y']] = 1
+        #pos_matrix[pos['x'], pos['y']] = 1
         # #print(pos_matrix)
         # print('+++++++++++++++++++++++++')
         # for i in range(25):
