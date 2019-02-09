@@ -81,7 +81,7 @@ if __name__ == '__main__':
         if data == None:
             continue
 
-        #data = [d * 0.0436 for d in data]
+        data = [d * 0.042857 for d in data]
 
         print("%.0f, %.0f, %.0f, %.0f"  % (data[d_format['fwd']], data[d_format['bkwd']], data[d_format['left']], data[d_format['right']]))
         # if magnet_data:
