@@ -1,5 +1,6 @@
 from smbus2 import SMBusWrapper
 import time
+import math
 
 
 def readData():
@@ -17,7 +18,7 @@ def readData():
         data.append(block[0] << 8 | block[1])
         data.append(block[2] << 8 | block[3])
         data.append(block[4] << 8 | block[5])
-        print(data)
+        print(math.degrees(math.atan2(y, x)))
 
 if __name__ == '__main__':
     while True:
