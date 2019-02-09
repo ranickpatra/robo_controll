@@ -22,6 +22,9 @@ def readData():
 
 if __name__ == '__main__':
     while True:
-
-        print(readData())
+        data = readData()
+        if data == None:
+            continue
+        x, y, z = data
+        print(math.degrees(math.atan2(y, x)))
         time.sleep(0.2)
