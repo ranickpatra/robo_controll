@@ -89,17 +89,17 @@ if __name__ == '__main__':
         pos['x'] = int(data[d_format['bkwd']] / 20)
         pos['y'] = int(data[d_format['left']] / 20)
         pos_matrix.fill(0)
-        #pos_matrix[pos['x'], pos['y']] = 1
-        # #print(pos_matrix)
-        # print('+++++++++++++++++++++++++')
-        # for i in range(25):
-        #     for j in range(25):
-        #         if pos_matrix[i, j] == 0:
-        #             print(' .', end='')
-        #         else:
-        #             print(' #', end='')
-        #     print('')
-        # print('+++++++++++++++++++++++++')
+        pos_matrix[pos['x'], pos['y']] = 1
+        #print(pos_matrix)
+        print('+++++++++++++++++++++++++')
+        for i in range(25):
+            for j in range(25):
+                if pos_matrix[i, j] == 0:
+                    print(' .', end='')
+                else:
+                    print(' #', end='')
+            print('')
+        print('+++++++++++++++++++++++++')
         time.sleep(0.1)
     exitFlag = 1
     thread1.join()
