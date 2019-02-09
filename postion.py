@@ -91,6 +91,7 @@ if __name__ == '__main__':
         pos_matrix.fill(0)
         pos_matrix[pos['x'], pos['y']] = 1
         #print(pos_matrix)
+        print('+++++++++++++++++++++++++')
         for i in range(25):
             for j in range(25):
                 if pos_matrix[i, j] == 0:
@@ -98,7 +99,7 @@ if __name__ == '__main__':
                 else:
                     print('#', end='')
             print('')
-
+        print('+++++++++++++++++++++++++')
         time.sleep(0.1)
     exitFlag = 1
     thread1.join()
