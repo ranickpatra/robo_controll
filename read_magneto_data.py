@@ -5,7 +5,7 @@ import time
 def readData():
     with SMBusWrapper(1) as bus:
         try:
-            block = bus.read_i2c_block_data(address, 0, 6)
+            block = bus.read_i2c_block_data(6, 0, 6)
         except:
             print("I2C ERROR")
             return
