@@ -18,7 +18,7 @@ def readData():
         data.append(block[0] << 8 | block[1])
         data.append(block[2] << 8 | block[3])
         data.append(block[4] << 8 | block[5])
-        print(math.degrees(math.atan2(y, x)))
+        print(math.degrees(math.atan2(data[1], data[0])))
 
 if __name__ == '__main__':
     while True:
