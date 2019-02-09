@@ -5,7 +5,7 @@ import sys
 #from clean_print import Cprint
 import math
 import numpy as np
-from read_magneto_data import readData as read_magnet
+#from read_magneto_data import readData as read_magnet
 
 
 #length = 455 cm
@@ -22,23 +22,23 @@ pos = {'x':0, 'y':0}
 magnet_data = None
 exitFlag = 0
 
-class magReadThread (threading.Thread):
-    def __init__(self, threadID, name):
-        threading.Thread.__init__(self)
-        self.threadID = threadID
-        self.name = name
-    def run(self):
-        readMagneto(self.name)
-
-def readMagneto(name):
-    global magnet_data
-    while True:
-        if exitFlag:
-            print('Thread exit ', name)
-            name.exit()
-
-        magnet_data = read_magnet()
-        time.sleep(0.01)
+# class magReadThread (threading.Thread):
+#     def __init__(self, threadID, name):
+#         threading.Thread.__init__(self)
+#         self.threadID = threadID
+#         self.name = name
+#     def run(self):
+#         readMagneto(self.name)
+#
+# def readMagneto(name):
+#     global magnet_data
+#     while True:
+#         if exitFlag:
+#             print('Thread exit ', name)
+#             name.exit()
+#
+#         magnet_data = read_magnet()
+#         time.sleep(0.01)
 
 def readData():
     with SMBusWrapper(1) as bus:
@@ -64,11 +64,11 @@ def readData():
 
 
 if __name__ == '__main__':
-    thread1 = magReadThread(1, 'Thread-1')
-    try:
-        thread1.start();
-    except KeyboardInterrupt:
-        exitFlag = 1
+    # thread1 = magReadThread(1, 'Thread-1')
+    # try:
+    #     thread1.start();
+    # except KeyboardInterrupt:
+    #     exitFlag = 1
     while True:
         data = readData()
 
