@@ -8,4 +8,4 @@ while True:
     [x, y, z] = sensor.get_magnet()
     deg = math.degrees(math.atan2(y, x))
     print(x, y, z)
-    time.sleep(0.1)
+    time.sleep(0.2)
