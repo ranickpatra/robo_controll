@@ -90,7 +90,7 @@ if __name__ == '__main__':
         pos['y'] = int(data[d_format['left']] / 20)
         pos_matrix.fill(0)
         pos_matrix[pos['x'], pos['y']] = 1
-
+        print(pos_matrix)
 
         time.sleep(0.1)
     exitFlag = 1
