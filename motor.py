@@ -10,6 +10,9 @@ def send(data):
         data[0] = 0
     #print(data)
     with SMBusWrapper(1) as bus:
-        bus.write_i2c_block_data(address, 0, data)
+        try:
+            bus.write_i2c_block_data(address, 0, data)
+        except:
+            pass
         #block = bus.read_i2c_block_data(address, 0, 2)
         #print(block)
