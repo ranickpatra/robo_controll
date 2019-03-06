@@ -5,7 +5,12 @@ address = 0x05
 
 def readData():
     with SMBusWrapper(1) as bus:
-        block = bus.read_i2c_block_data(address, 0, 8)
+        try:
+            block = bus.read_i2c_block_data(address, 0, 8)
+        except:
+            print("I2C ERROR")
+            return
+
         for b in block:
             if b & 0xFF == 0xFF:
                 return
@@ -21,4 +26,3 @@ def readData():
 while True:
     readData()
     time.sleep(0.1)
-
